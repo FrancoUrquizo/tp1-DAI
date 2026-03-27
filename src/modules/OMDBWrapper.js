@@ -7,7 +7,20 @@ respuesta : false,
 cantidadTotal : 0,
 datos : []
 };
-// No seas vago, acá hay que hacer el cuerpo de la función!!!
+
+
+console.log('respuesta', respuesta);
+
+
+  const requestString = `http://www.omdbapi.com/?t=avenger&apikey=5b3538ac` + searchText + "&page" + page;
+
+  const apiResponse = await axios.get(requestString);
+  returnObject.respuesta=apiResponse.data
+  returnObject.cantidadTotal=apiResponse.Search.TotalResult
+
+  return apiResponse.data;
+
+
 return returnObject;
 };
 const OMDBSearchComplete = async (searchText) => {
